@@ -1,0 +1,189 @@
+PImage Giraffe;
+PImage Elephant;
+PImage Sign;
+PImage Carrot;
+int pressedState=0;
+int pressed =0;
+
+
+
+int giraffeTargetX, giraffeTargetY;
+
+Collision myCollision;
+
+ZooImages myZoo;
+ 
+  Timer myTimer;
+  
+  //I am doing a zoo theme 
+void setup(){
+   size(800,600);
+  background(#34B2FF);
+  giraffeTargetX = 500;
+  giraffeTargetY = 60;
+  
+  Giraffe = loadImage("giraffe.png");
+  Elephant = loadImage("elephant.png");
+  Sign = loadImage("sign.png");
+  Carrot = loadImage("Carrot.png");
+  
+    
+    myZoo = new ZooImages();
+    myTimer= new Timer(20000);
+    myCollision = new Collision();
+}
+
+
+void draw(){
+  background(#34B2FF);
+  if(keyPressed){
+     background(0);
+     
+
+   }
+  
+ if (pressedState == 1) {
+    //second screen 
+    println("elefant!");
+    image(Elephant,220,150,350,300);
+    image(Sign,5,200,200,200);
+    image(Carrot,mouseX-30,mouseY-40,100,100);
+    
+   //sun
+    fill(#FFF934);
+    ellipse(100,100,100,100);
+    
+    //gate
+    fill(#5D3209);
+    rect(300,300,200,50);
+    rect(500,300,50,100);
+    rect(300,300,50,100);
+    //ground
+    fill(#078634);
+    rect(0,400,800,400);
+   
+ 
+  }
+  
+  else  {
+    //first screen 
+    //ellipseMode(CENTER);
+    //ellipse(500,60,60,60);
+    image(Giraffe,450,25);
+    image(Carrot,mouseX-30,mouseY-40,100,100);
+     
+     myCollision.checkCollision(); 
+    
+ 
+
+    
+    
+    //sun
+    fill(#FFF934);
+    ellipse(100,100,100,100);
+     
+     //ground
+    fill(#078634);
+    rect(5,400,800,400);
+    
+    //gate
+    fill(#5D3209);
+    rect(500,200,50,200);
+    rect(730,200,50,200);
+    rect(500,250,280,50);
+    
+    fill(#D19422);
+    textSize(32);
+    text("WELCOME",100,200);
+  }
+   
+   
+    //Come again screen 
+    if (myTimer.isFinished()){
+      println("timer");
+      background(0);
+      textSize(40);
+      fill(255);
+      text("Come Again Soon",200,300);
+      
+      
+      myZoo.display();
+    }
+  }
+  
+
+void mousePressed(){
+  pressed=pressed +1;
+  pressedState =(pressed %2);
+  
+}
+
+void keyPressed(){
+  background(0);
+  
+}
+
+class Collision{
+  
+  boolean Collision; 
+  
+  
+  Collision() {
+   
+    
+  }
+
+  void checkCollision(){
+
+        // collision boundary
+      
+      if(((Math.abs(mouseX - giraffeTargetX)) < 30) && (Math.abs(mouseY - giraffeTargetY) < 30)){
+        
+        fill(0);
+       text("YUMM!", 600, 50);
+       
+      }
+  }
+}
+
+class Timer{
+  int savedTime;
+  int totalTime;
+  Timer(int _totalTime){
+    totalTime = _totalTime;
+  }
+  
+   void start() {
+    savedTime = millis();
+   }
+     boolean isFinished() {
+       int passedTime = millis() - savedTime;
+   if (passedTime > totalTime) {
+     return true;
+   } else {
+     return false;
+   }
+ }
+}  
+
+class ZooImages{
+  
+  PImage [] ZooImages;
+  
+  
+  ZooImages(){
+    
+    ZooImages = new PImage [3];
+    ZooImages[0] = loadImage("zebra.png");
+    ZooImages[1] = loadImage("lion.png");
+    ZooImages[2] = loadImage("tiger.png");
+  }
+   
+  void display(){
+    
+    image(ZooImages[0], 300, 400, 250, 200);
+    image(ZooImages[1], 100,50,250,200);
+    image(ZooImages[2], 500,50,250,200);
+  }
+
+}
