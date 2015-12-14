@@ -52,50 +52,718 @@ text("The Book",530,300);
   <p>Description: On my FINAL SKETCH ASSIGNMENT</p>
         <br />
         <br />
-  <h1>Your Sketch1 Title</h1>
+  <h1>Assignment 5</h1>
   <script type="text/processing" data-processing-target="mycanvas1">
   
-  <!-- Your sketch1 goes here -->
+  int posX = 25;
+int posY = 150;
+int movementSize = 1;
+int ballDiameter = 25;
+
+
+void setup(){
+  size(1200,600);
+  background(20,30,196);
+  
+  
+ 
+}
+
+void draw() {
+   background(20,30,196);
+  
+  //Moon
+  
+  fill(255,236,85);
+  ellipse(posX,posY,ballDiameter,25);
+ update();
+
+
+
+//Yard of the castle
+  fill(52,178,67);
+  rect(0,400,1250,400);
+  
+  //Castle
+  fill(50);
+  stroke(0);
+  strokeWeight(2);
+  
+  //Roof top of castle
+  rect(500,200,200,200);
+  rect(500,100,25,100);
+  rect(675,100,25,100);
+  rect(560,100,80,100);
+   fill(50);
+  triangle(540,100,600,25,660,100);
+  triangle(495,100,510,60,530,100);
+  triangle(670,100,690,60,705,100);
+  noStroke();
+  fill(250,226,43);
+  rect(590,145,25,25);
+  
+  //Door
+  stroke(0);
+  strokeWeight(1);
+  fill(124,65,6);
+  rect(550,300,90,100);
+  
+  //Knob
+  ellipseMode(CENTER);
+  fill(252,243,64);
+  ellipse(630,350,15,15);
+  
+//Ghost
+noStroke();
+   fill(255);
+  arc(mouseX,mouseY,100,100, PI,TWO_PI);
+  rect(mouseX-50,mouseY,100,100);
+  ellipseMode(CENTER);
+  fill(0);
+  ellipse(mouseX-20,mouseY,20,20);
+  ellipseMode(CENTER);
+  fill(0);
+  ellipse(mouseX+20,mouseY,20,20);
+  ellipseMode(CENTER);
+  fill(0);
+  ellipse(mouseX,mouseY+20,20,20);
+   
+   //Happy Halloween :)
+   fill(242,165,20);
+   textSize(24);
+ text("Happy Halloween!", 800, 100);
+  
+  //This is for the walk way by the haunted castle
+  for(int x= 1; x<10; x++){
+    fill(88,58,3);
+    rect(545,400,100,200);
+  }
+  
+  
+}
+  
+  void update(){
+  if((posX + (ballDiameter/2)) > width){
+   movementSize = movementSize * -1;
+  } else if (posX < ballDiameter/2){
+    movementSize = movementSize * -1;
+  }
+ posX = posX + movementSize;
+}
+  
 
   </script>
   <canvas id="mycanvas1"></canvas>
   <p>Description:</p>
         <br />
         <br />
-  <h1>Your Sketch2 Title</h1>
+  <h1>Assignment 6</h1>
   <script type="text/processing" data-processing-target="mycanvas2">
   
-  <!-- Your sketch2 goes here -->
+ int posX= 25;
+int posY = 450;
+int movementSize=3;
+int ballDiameter=25;
+
+int pressedState=0;
+int pressed = 0;
+
+void setup(){
+size(1200,800);
+background(#3E5EF7);
+
+}
+
+void draw(){
+background(#3E5EF7);
+  if(pressedState ==1){  
+     background(0);
+ 
+     drawHamburger();
+ 
+ textSize(32);
+ text("HAMBURGER!!!!!!",300,300);
+ //Plate
+ fill(225);
+ ellipse(500,600,550,75);
+ stroke(5);
+ ellipse(500,600,250,50);
+  }
+  else {
+   //baby
+  //eyes
+  fill(#F5DB92);
+ ellipse(750,300,500,600); 
+  ellipseMode(CENTER);
+  fill(255);
+  ellipse(630,200,100,50);
+  fill(#2CDAE8);
+  ellipse(630,200,50,50);
+  fill(225);
+  ellipse(850,200,100,50);
+  fill(#2CDAE8);
+  ellipse(850,200,50,50);
+  fill(0);
+  ellipse(630,200,25,25);
+  ellipse(850,200,25,25);
+  //mouth
+  fill(0);
+  ellipse(750,450,200,100);
+  fill(225);
+  rect(720,400,50,60);
+  
+  fill(225);
+  textSize(32);
+  text("I want HAMBURGER!",100,300);
+  //bib
+  for(int x=1; x<10; x++){
+    fill(225);
+    rect(600,600,300,100);
+    fill(#098112);
+  ellipse(700,650,25,25);
+  }
+  //spoon
+  
+  fill(50);
+  rect(posX,posY-10,100,20);
+  fill(50);
+  ellipse(posX, posY, ballDiameter,25);
+  ellipse(posX+150,posY,100,50);
+  fill(#098112);
+  ellipse(posX+150,posY,50,50);
+  update();
+  } 
+}//scene
+void mousePressed(){
+  background(#3E5EF7);
+  pressed=pressed +1;
+  pressedState =(pressed %2);
+}
+  //hamburger
+void drawHamburger(){
+  int centerX= round(random(width));
+  int centerY= round(random(width));
+  int offset1= 15;
+  int offset2= 15;
+  frameRate(3);
+      fill(#E08E29);
+     arc(centerX+100,centerY,200,200,PI,TWO_PI);
+     fill(#2B890F);
+     rect(centerX,centerY,200,25);
+     fill(#6A400D);
+     rect(centerX,centerY+20,200,50);
+     fill(#ED1123);
+     rect(centerX,centerY+50,200,50);
+     fill(#E08E29);
+     rect(centerX,centerY+100,200,75);
+  
+}
+
+void update(){
+  if((posX + (ballDiameter/2)) > width){
+   movementSize = movementSize * -1;
+  } else if (posX < ballDiameter/2){
+    movementSize = movementSize * -1;
+  }
+ posX = posX + movementSize;
+}
 
   </script>
   <canvas id="mycanvas2"></canvas>
   <p>Description:</p>
         <br />
         <br />
-  <h1>Your Sketch3 Title</h1>
+  <h1>Assignment 7</h1>
   <script type="text/processing" data-processing-target="mycanvas3">
   
-  <!-- Your sketch3 goes here -->
+ int posX = 50;
+int posY = 300;
+int movementSize=2;
+int ballDiameter=100;
+PImage sia;
+PImage chandelier;
+int pressedState=0;
+int pressed = 0;
+
+void setup(){
+  size(1200,1000);
+  background(225);
+
+  sia = loadImage("Sia.jpg");
+  chandelier= loadImage("chandelier.jpg");
+}
+
+ 
+void draw(){
+  background(225);
+
+ if(pressedState ==1){
+     background(#EAA8DC);
+  //Music Note
+  fill(0);
+  rect(posX-10,posY-200,50,200);
+ellipse(posX-5,posY, ballDiameter-10, 40);
+rect(posX+140,posY-200,50,200);
+rect(posX-10,posY-200,200,50);
+ellipse(posX+145,posY,ballDiameter-10,40);
+image(chandelier,500,350);
+//Lyrics 
+textSize(14);
+text("I'm gonna swing from the chandelier, from the chandelier",10,500); 
+text("I'm gonna live like tomorrow doesn't exist, like it doesn't exist", 10,520);
+text("I'm gonna fly like a bird through the night, feel my tears as they dry",10,540); 
+text("I'm gonna swing from the chandelier, from the chandelier",10,560); 
+
+update();
+ }
+  else {
+ image(sia,70,50);
+ //Mic
+  fill(0);
+ rect(290,370,75,180);
+ fill(50);
+ ellipse(330,330,150,150 );
+ textSize(32);
+text("SIA",800,300);
+    
+    
+  }
+}
+void mousePressed(){
+  pressed=pressed +1;
+  pressedState =(pressed %2);
+  
+  
+}
+
+void update(){
+  if((posX + (ballDiameter/2)) > width){
+   movementSize = movementSize * -1;
+  } else if (posX < ballDiameter/2){
+    movementSize = movementSize * -1;
+  }
+ posX = posX + movementSize;
+}
+
+void display(){
+  
+ 
+  
+  
+  
+}
 
   </script>
   <canvas id="mycanvas3"></canvas>
   <p>Description:</p>
         <br />
         <br />
-  <h1>Your Sketch4 Title</h1>
+  <h1>Assignment 8</h1>
   <script type="text/processing" data-processing-target="mycanvas4">
   
-  <!-- Your sketch4 goes here -->
+  int pressedState=0;
+int pressed = 0;
+PImage arcade;
+
+class Timer{
+  int savedTime;
+  int totalTime;
+  
+  Timer(int _totalTime){
+    totalTime = _totalTime;
+  }
+  
+   void start() {
+    savedTime = millis();
+    }
+     boolean isFinished() {
+       int passedTime = millis() - savedTime;
+   if (passedTime > totalTime) {
+     return true;
+   } else {
+     return false;
+   }
+ }
+}
+
+class Movement{
+  int centerX, centerY, offset1, offset2, offsetX1, offsetX2, r1, r2, r3;
+  boolean keys[];
+  int savedTime, totalTime;
+
+int xVelocity, yVelocity;
+
+Movement(){
+    centerX = round(random(0, width));
+    centerY = round(random(0, height));
+    offset1 = -20;
+    offset2 = +20;
+    offsetX1 = -20;
+    offsetX2 = + 20;
+    r1 = 40;
+    r2 = 20;
+    r3 = 15;
+    keys = new boolean [4];
+  }
+ //arcade screen
+ void display(){
+    fill(#F5D7AF);
+    rect(centerX, centerY, r1, 40); 
+    fill(#F70718);
+    rect(centerX, centerY, r1, 10);
+    fill(#4750F2);
+    rect(centerX,centerY+40,r1,30);
+    rect(centerX,centerY+70,10,r1);
+    rect(centerX+30,centerY+70,10,r1);
+    fill(50);
+    rect(centerX,centerY+100,20,15);
+    rect(centerX+30,centerY+100,20,15);
+   
+  }
+  
+  void update(){
+    if (keys[0]){
+      yVelocity = -5;
+    }
+    if(keys[1]){
+      yVelocity = 5;
+    }
+    if(keys[2]){
+      xVelocity = -5;
+    }
+    if(keys[3]){
+      xVelocity = 5;
+    }
+    if(!keys[2] && !keys[3]){ 
+      xVelocity = 0;
+      
+    }
+    if(!keys[0] && !keys[1]){ 
+      yVelocity = 0;
+      
+    }
+    centerX += xVelocity;
+    centerY += yVelocity;
+  }
+ void keyPressed(){
+    if(key == 'w'){
+      keys[0] = true;
+    } 
+    if(key == 's'){
+      keys[1] = true;
+    }
+    if(key == 'a'){
+      keys[2] = true;
+    }
+    if(key == 'd'){
+      keys[3] = true;
+    } 
+  }
+  
+  void keyReleased(){ 
+    println("Keyreleased " + key);
+    if(key == 'w'){
+      keys[0] = false;
+    } 
+    if(key == 's'){
+      keys[1] = false;
+    }
+    if(key == 'a'){
+      keys[2] = false;
+    }
+    if(key == 'd'){
+      keys[3] = false;
+    } 
+  }   
+}
+
+Movement newMovement;
+
+Timer myTimer;
+
+void setup(){
+  size(800,600);
+  newMovement = new Movement();
+    arcade= loadImage("imgres.jpg");
+    //Move player up to the flag and land him at the botton of the flag. After 2 seconds and without pressing any buttons the will words appear. 
+    myTimer = new Timer(2000);
+  
+}
+
+
+
+void draw(){
+  background(#FCE457);
+  
+if(pressedState ==1){
+
+   // blocks and flag 
+    
+       fill(225);
+      ellipse(200,300,50,50);
+      background(0);
+     fill(#F2D80C);
+     rect(200,300,100,50);
+     rect(400,200,100,50);
+     fill(#5F3609);
+     rect(0,500,900,200);
+     fill(50);
+     rect(700,100,20,400);
+     fill(#F50C14);
+     triangle(600,100,720,50,720,100);
+     
+       
+       
+       if (myTimer.isFinished()){
+        println("timer");
+        fill(#49EAD6);
+        textSize(32);
+        text("Congratulations!", 300, 100);
+
+  }
+  
+  
+  
+ // character moving displaying
+ newMovement.update();
+  newMovement.display();
+} else {
+    
+    //Arcade machine
+  fill(0);
+  rect(225,150,350,300);
+ image(arcade,220,10);
+ rect(250,475,300,100);
+  
+  //buttons
+  fill(#FF0000);
+  stroke(0);
+  ellipse(300,500,25,25);
+  fill(#0F0CF5);
+  ellipse(330,530,25,25);
+  fill(225);
+  ellipse(360,500,25,25);
+  
+  //stick 
+    fill(100);
+    rect(500,500,10,50);
+    fill(#F2180C);
+    ellipse(505,500,20,20);
+  }
+}
+    
+void keyPressed(){
+  newMovement.keyPressed(); 
+  myTimer.start();
+}
+
+void keyReleased(){
+  newMovement.keyReleased(); 
+}
+
+void mousePressed(){
+  pressed=pressed +1;
+pressedState =(pressed %2);
+  
+}
 
   </script>
   <canvas id="mycanvas4"></canvas>
   <p>Description:</p>
         <br />
         <br />
-  <h1>Your Sketch5 Title</h1>
+  <h1>Final Assignment</h1>
   <script type="text/processing" data-processing-target="mycanvas5">
   
-  <!-- Your sketch5 goes here -->
+ PImage Giraffe;
+PImage Elephant;
+PImage Sign;
+PImage Carrot;
+int pressedState=0;
+int pressed =0;
+
+
+
+int giraffeTargetX, giraffeTargetY;
+
+Collision myCollision;
+
+ZooImages myZoo;
+ 
+  Timer myTimer;
+  
+  //I am doing a zoo theme 
+void setup(){
+   size(800,600);
+  background(#34B2FF);
+  giraffeTargetX = 500;
+  giraffeTargetY = 60;
+  
+  Giraffe = loadImage("giraffe.png");
+  Elephant = loadImage("elephant.png");
+  Sign = loadImage("sign.png");
+  Carrot = loadImage("Carrot.png");
+  
+    
+    myZoo = new ZooImages();
+    myTimer= new Timer(20000);
+    myCollision = new Collision();
+}
+
+
+void draw(){
+  background(#34B2FF);
+  if(keyPressed){
+     background(0);
+     
+
+   }
+  
+ if (pressedState == 1) {
+    //second screen 
+    println("elefant!");
+    image(Elephant,220,150,350,300);
+    image(Sign,5,200,200,200);
+    image(Carrot,mouseX-30,mouseY-40,100,100);
+    
+   //sun
+    fill(#FFF934);
+    ellipse(100,100,100,100);
+    
+    //gate
+    fill(#5D3209);
+    rect(300,300,200,50);
+    rect(500,300,50,100);
+    rect(300,300,50,100);
+    //ground
+    fill(#078634);
+    rect(0,400,800,400);
+   
+ 
+  }
+  
+  else  {
+    //first screen 
+    //ellipseMode(CENTER);
+    //ellipse(500,60,60,60);
+    image(Giraffe,450,25);
+    image(Carrot,mouseX-30,mouseY-40,100,100);
+     
+     myCollision.checkCollision(); 
+    
+ 
+
+    
+    
+    //sun
+    fill(#FFF934);
+    ellipse(100,100,100,100);
+     
+     //ground
+    fill(#078634);
+    rect(5,400,800,400);
+    
+    //gate
+    fill(#5D3209);
+    rect(500,200,50,200);
+    rect(730,200,50,200);
+    rect(500,250,280,50);
+    
+    fill(#D19422);
+    textSize(32);
+    text("WELCOME",100,200);
+  }
+   
+   
+    //Come again screen 
+    if (myTimer.isFinished()){
+      println("timer");
+      background(0);
+      textSize(40);
+      fill(255);
+      text("Come Again Soon",200,300);
+      
+      
+      myZoo.display();
+    }
+  }
+  
+
+void mousePressed(){
+  pressed=pressed +1;
+  pressedState =(pressed %2);
+  
+}
+
+void keyPressed(){
+  background(0);
+  
+}
+
+class Collision{
+  
+  boolean Collision; 
+  
+  
+  Collision() {
+   
+    
+  }
+
+  void checkCollision(){
+
+        // collision boundary
+      
+      if(((Math.abs(mouseX - giraffeTargetX)) < 30) && (Math.abs(mouseY - giraffeTargetY) < 30)){
+        
+        fill(0);
+       text("YUMM!", 600, 50);
+       
+      }
+  }
+}
+
+class Timer{
+  int savedTime;
+  int totalTime;
+  Timer(int _totalTime){
+    totalTime = _totalTime;
+  }
+  
+   void start() {
+    savedTime = millis();
+   }
+     boolean isFinished() {
+       int passedTime = millis() - savedTime;
+   if (passedTime > totalTime) {
+     return true;
+   } else {
+     return false;
+   }
+ }
+}  
+
+class ZooImages{
+  
+  PImage [] ZooImages;
+  
+  
+  ZooImages(){
+    
+    ZooImages = new PImage [3];
+    ZooImages[0] = loadImage("zebra.png");
+    ZooImages[1] = loadImage("lion.png");
+    ZooImages[2] = loadImage("tiger.png");
+  }
+   
+  void display(){
+    
+    image(ZooImages[0], 300, 400, 250, 200);
+    image(ZooImages[1], 100,50,250,200);
+    image(ZooImages[2], 500,50,250,200);
+  }
+
+}
 
   </script>
   <canvas id="mycanvas5"></canvas>
